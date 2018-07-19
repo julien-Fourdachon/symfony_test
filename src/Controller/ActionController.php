@@ -14,7 +14,7 @@ class ActionController extends Controller
 
 
     /**
-     * @Route("", name="app_hello1") //add this comment to annotations
+     * @Route("/hello2", name="app_hello1") //add this comment to annotations
      *
      * @Template("main/menu.html.twig")
      */

@@ -49,6 +49,11 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
     }
     */
 
+    /**
+     * @param string $username
+     * @return mixed|null|\Symfony\Component\Security\Core\User\UserInterface
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function loadUserByUsername($username){
         return $this->createQueryBuilder('u')
             ->where('u.username = :username OR u.email = :email')

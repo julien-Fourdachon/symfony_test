@@ -14,6 +14,10 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\Form\ProductType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Form\UserType;
+use App\Entity\User;
+
 
 
 class ProductController extends Controller
@@ -74,6 +78,7 @@ class ProductController extends Controller
         $form->handleRequest ($request);
         if ($form->isSubmitted () && $form->isValid ()) {
 
+
             $em->flush ();
             return $this->redirectToRoute ("product.all");
         }
@@ -94,5 +99,7 @@ class ProductController extends Controller
         $em->flush ();
         return $this->redirectToRoute ("product.all");
     }
+
+
 
 }

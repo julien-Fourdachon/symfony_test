@@ -18,11 +18,13 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+            anonymous: ~
+
         main:
             pattern:    ^/   # regex of the path the firewall applies to - here everything
-                        http_basic: ~    # use http basic for login
                         provider: my_db_provider # it specifies what provider to use
             anonymous: true
+
 
             # activate different ways to authenticate
 
@@ -35,5 +37,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-            - { path: ^/public, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
             - { path: ^/, roles: ROLE_USER }
+

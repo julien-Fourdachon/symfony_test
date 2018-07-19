@@ -35,7 +35,28 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json_array")
      */
-    private $roles;
+    private $roles = ["ROLE_USER"];
+
+
+    private $plainPassword;
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+
 
     public function getId()
     {
@@ -97,7 +118,7 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        $this->plainPassword=null;
     }
 
     public function addRole($role)
